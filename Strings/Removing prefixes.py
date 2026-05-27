@@ -9,3 +9,6 @@ message = "one of the python's strength is its diverse community."
 print(message)
 
 ##if we have used the single quotes it would have produces the error
+
+
+print("i you will use the  double quotes it is more preferable how ever it depends on you")
