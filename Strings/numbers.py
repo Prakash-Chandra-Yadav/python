@@ -8,3 +8,14 @@ print(10**6)
 ##by default python supports the order of operation mathematically, but if you want to change the order you can use the () parentheses 
 print(2+3*2)
 print((2+3)*2)
+
+
+##how does python treat the floats 
+##by default python calls any number with decimal point as the float 
+print(0.1+0.1)
+print(3*0.1)
+##even if you divide the one integer by another integer you will get the float 
+print(4/2)
+
+
+
