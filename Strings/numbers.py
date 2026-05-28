@@ -24,4 +24,9 @@ print(universe_age)
 print("python ignores the underscores")
 
 
+##multiple assignmnets 
+##values can be assigne to the more than one variables in a single line of code 
+x,y,z = 1,2,3
+print(x,y,z)
+
 
