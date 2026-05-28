@@ -18,4 +18,10 @@ print(3*0.1)
 print(4/2)
 
 
+##digits can be grouped using the underscores, it will not effectthe execution 
+universe_age = 14_000_000_000
+print(universe_age)
+print("python ignores the underscores")
+
+
 
