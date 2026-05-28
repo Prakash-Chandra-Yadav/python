@@ -29,4 +29,13 @@ print("python ignores the underscores")
 x,y,z = 1,2,3
 print(x,y,z)
 
+##what about the constant, how do we store the constants 
+##python dosent recocnize the constant seperatly than the normal variabels 
+##so the programmers need to use the capital letter for the constant indicationg that the valuse must not be changes 
+
+MAX_CONNECTIONS = 100
+print(MAX_CONNECTIONS)
+
+
+
 
