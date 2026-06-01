@@ -125,3 +125,33 @@ print(invitations)
 del invitations[0]
 del invitations[0]
 print(invitations)
+
+##organizing the list 
+#sorting a list permanently using sort methidd 
+cars = ["bmw","audi","toyota","subaru","cetron"]
+print(f"this is the non sorted list {cars}")
+cars.sort()
+print(cars) #bydefault the sort function sorts the list alphabetically or in the accending order if items are in the form of integer
+
+#what if i want to display the list in the reverse alphabetical order 
+cars.sort(reverse=True)
+print(cars)
+
+#sorting a list temprorarily 
+##what if i want to display the list in the sorted order but in the program i wan to store the list in the original order 
+##remember: there is very much difference between the sort and sorted method 
+
+print(cars)
+
+print(sorted(cars))
+print(f"you can see that the original order of the list hasnt been changed {cars}")
+
+#NOte, when you use the sort method you calls the method upon the list where as when you use the sorted method you pass the list inside it as an argument 
+
+#printing the list in the reverse order 
+cars.reverse()
+print(cars)
+
+##finding the lenght of the list, we can simply use the len method 
+numbers_of_car = len(cars)
+print(f"there are total {numbers_of_car} numbers of cars in the list")
