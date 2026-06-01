@@ -126,4 +126,3 @@ for name in friend_names[3:]:
 
 for name in friend_names[-3:]:
     print(f"-hello {name}")
-    
