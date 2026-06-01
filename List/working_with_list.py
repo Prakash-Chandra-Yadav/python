@@ -115,3 +115,15 @@ print(players[-3:])
 print("here are the first 3 players of my team: ")
 for player in players[:3]:
     print(player.title())
+##Try it yourself 
+friend_names = ["ram","shyam","ghanshyam","guddhu","banti","chintu"]
+##print the messahe to the first three friends 
+for name in friend_names[0:3]:
+    print(f"hello {name}")
+
+for name in friend_names[3:]:
+    print(f"hello {name}")
+
+for name in friend_names[-3:]:
+    print(f"-hello {name}")
+    
