@@ -28,3 +28,24 @@ print(bicycles)
 
 bicycles.insert(1,'phoneix')
 print(bicycles)
+
+##removing an element from the list 
+
+##well in that case if you know the position of and element you can ude the del statemebt 
+del bicycles[0]
+print(bicycles)
+
+##using pop method, it removes the item from the end of the list 
+popped_bicycles = bicycles.pop()
+print(popped_bicycles)
+
+##we can pop the items for any positions as well 
+
+popped_bicycle = bicycles.pop(0)
+print(popped_bicycle)
+
+##what if we dont know the position of an item we want to removein that case we can use the remove fucntion 
+motorcycles = ["hero","tvs","bajaj","yamaha","ninja"]
+print(motorcycles)
+motorcycles.remove('bajaj')
+print(motorcycles)
