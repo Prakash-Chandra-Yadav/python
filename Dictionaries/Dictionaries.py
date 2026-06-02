@@ -27,3 +27,42 @@ else:
 #now the new position of the alien is olde position + increment 
 alien_2['x_position'] = alien_2['x_position'] + x_increment
 print(f"new position of the alien is {alien_2['x_position']}")
+
+##removing the key value pairs from the dictationaries 
+alien_3 = {'color':'green','points':5}
+del alien_3['color']
+print(alien_3)
+
+#using get() to access the variable 
+##sometimes if the key doesnt exists in the dictionary it will produce the error if we try toa accedd the key directlt so instead we can use the get() method 
+alien_3 = {'color':'green','points':8,'x_position':2,}
+speed_value = alien_3.get('speed', 'there is now key as such ')
+print(speed_value)
+
+#looping through the dictationaries 
+user_0 = {'username':'efermi',
+          'first':'enrico',
+          'last':'fermi',}
+for key,value in user_0.items():
+    print(f"key: {key}")
+    print(f"value: {value}")
+
+##dictionaries  loopin through dictionaries using item()
+favorite_language = {'jen':'python',
+                     'sarah':'c',
+                     'edward':'rust',
+                     'phil':'python',}
+for name, languages in favorite_language.items():
+    print(f"{name.title()} likes {languages.title()}")
+
+
+##what if only want to loop in the keys 
+for key in favorite_language.keys():
+    print(f"hi!! {key}")
+
+##hwat if you want to loop on values 
+for value in favorite_language.values():
+    print(f"{value}")
+
+#Nesting
+
