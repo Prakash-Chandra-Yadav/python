@@ -84,5 +84,44 @@ for language in sorted(favorite_language.values()):
 for language in sorted(favorite_language.values(),reverse=True):
     print(f"{language.title()} comes first  reverse alphabetical order")
 
-##looping through all values in dictionaries
+##NESTING 
+##these are the alien details but how can we manage the fleet of aliens 
+alien_0 = {'color':'green','points':5}
+alien_1 = {'color':'yellow','points':10}
+alien_2 = {'color':'red','points':20}
+
+aliens = [alien_0, alien_1, alien_2]
+for alien in aliens:
+    print(alien)
+
+##a more realisting examples will be to create an emplty alien list and then add the aliens in it 
+
+##make empty list for storing aliens 
+aliens = []
+
+##make 30 green aliens 
+for alien_number in range(30):
+    new_alien = {'color':'green','points':5,'speed':'slow'}
+    aliens.append(new_alien)
+
+##show the firs 5 aliens 
+for alien in aliens[:5]:
+    print(alien)
+print("...")
+
+#show how many aliens have been cretaed 
+print(f"the total number of aliens are {len(aliens)}")
+
+##nwo change the coloe of first 3 aliens for yellow 
+for alien in aliens[:3]:
+    if alien['color'] =='green':
+        alien['color'] ='yellow'
+        alien['speed'] = 'medium'
+        alien['points'] = 15
+## now show the first 5 aliens and confirm if aliens have changed the color 
+print("you can see that the first 3 aliens have changed the colors")
+for alien in aliens[:5]:
+    print(alien)
+
+##so the example we have practiced above are the dictionary in the list 
 
