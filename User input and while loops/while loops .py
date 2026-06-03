@@ -54,3 +54,28 @@ while unconfirmed_users:
     confirmed_users.append(current_user)
 for user in confirmed_users: 
     print(f"{user.title()} has been verified")
+
+#remove all of instances specific values from a list 
+pets = ['dog','cat','dog','goldfish','cat','rabbit','cat']
+print(pets)
+while 'dog' in pets: 
+    pets.remove('dog')
+print(pets)
+
+## filling a dictationary with a user input 
+responses = {}
+##set the fplag to indicate that the polling is active
+polling_active = True 
+while polling_active:
+    name = input("enter your name: ")
+    response = input("which mountain would ypu like to climb: ")
+    #store the response in the dictionary 
+    responses[name] = response 
+
+    #find out if anyone else is going to take the poll 
+    repeat = input("would you like to let another person respond? yes/no : ")
+    if repeat == 'no':
+        polling_active = False 
+#show the result 
+for name, response in responses.items():
+    print(f"{name.title()} would like to climd {response.title()}")
