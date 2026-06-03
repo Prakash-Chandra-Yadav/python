@@ -64,5 +64,25 @@ for key in favorite_language.keys():
 for value in favorite_language.values():
     print(f"{value}")
 
-#Nesting
+#what if we want to check if certain keys exists in the dictionary 
+
+print(favorite_language.keys())
+if 'phil' in favorite_language.keys():
+    print("thanks for answering phil")
+if 'Prakash' not in favorite_language.keys():
+    print("please answer the question Prakash")
+if 'R' not in favorite_language.values():
+    print("so R is not anyones favorite language")
+#looping through the list in the particular order 
+#what if we want to sort the persons name by the alphabetical order 
+for name in sorted(favorite_language.keys()):
+    print(f"{name.title()} your name comes in first place alphabetically")
+
+for language in sorted(favorite_language.values()):
+    print(f"{language.title()} comes first alphabetically")
+
+for language in sorted(favorite_language.values(),reverse=True):
+    print(f"{language.title()} comes first  reverse alphabetical order")
+
+##looping through all values in dictionaries
 
