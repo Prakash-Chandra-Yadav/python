@@ -125,3 +125,49 @@ for alien in aliens[:5]:
 
 ##so the example we have practiced above are the dictionary in the list 
 
+##now what about list in a dictionary 
+
+##store the information about the pizza being ordered 
+pizza = {'crust':'thick',
+         'toppings':['mushrooms','extra cheese'],
+         }
+##summarize the otder 
+print(f"you have ordered the pizza with {pizza['crust']} crust \n with the following toppings")
+
+#note that program will treat the pizza['toppins'] as the list becuase it is stored as a list inthe value 
+for topping in pizza['toppings']: 
+    print(f"{topping}")
+
+##what if there are multiple keys as a value as a list 
+
+favorite_language = {
+    'jen': ['python','rust'],
+    'sarah': ['c'],
+    'edward' : ['rust','go'],
+    'phil' : ['python', 'haskell']
+}
+
+##now print the person name with their favorite languages 
+for name, languages in favorite_language.items():
+    print(f"{name}'s favorite langauges are: ")
+    for language in languages:
+        print(f"{language.title()}")
+
+
+##now dictionary in dictionary 
+users = {
+    'aeinstein': {'first':'albert',
+                  'last':'einstein',
+                  'location':'princeton',},
+    'mcuire': {'first':'marie',
+               'last':'curie',
+               'location':'paris',},
+}
+
+##now print each users information 
+for user, user_info in users.items():
+    print(f"here are the details of: {user.title()}: ")
+    full_name = f"{user_info['first'].title()} {user_info['last'].title()}"
+    location = f"{user_info['location'].title()}"
+    print(f"fullname: {full_name.title()}")
+    print(f"location: {location.title()}")
