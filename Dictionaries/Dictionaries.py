@@ -171,3 +171,4 @@ for user, user_info in users.items():
     location = f"{user_info['location'].title()}"
     print(f"fullname: {full_name.title()}")
     print(f"location: {location.title()}")
+
