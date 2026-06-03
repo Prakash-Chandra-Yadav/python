@@ -80,3 +80,26 @@ person1 = build_person('Prakash','chandra')
 print(person1)
 person1 = build_person('Prakash','chandra',25)
 print(person1)
+
+##using function with a while loop 
+##lets greet the user unitl he quits 
+def get_formatted_name(first_name,last_name,middle_name=''):
+    '''greets the user with the full name'''
+    if middle_name:
+        full_name = f"hi {first_name.title()} {middle_name.title()} {last_name.title()}"
+    else: 
+        full_name = f"hi {first_name.title()} {last_name.title()}"
+    return full_name 
+while True: 
+    print("please enter quit to stop")
+    f_name = input("first name: ")
+    if f_name == 'quit':
+        break 
+    m_name = input("middle name: ")
+    if m_name == 'quit':
+        break
+    l_name = input("last name: ")
+    if l_name == 'quit':
+        break 
+    greet = get_formatted_name(f_name,l_name,m_name)
+    print(greet)
