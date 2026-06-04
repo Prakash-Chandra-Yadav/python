@@ -39,6 +39,44 @@ def create_account():
             break  
         else:
             print("user already exists")
+##now create the function for login 
+def login():
+    while True:
+        user_ID = input("please enter the user_name: ")
+        for name in user_info.keys():
+            if name == user_ID:
+                passwd = input("Please Enter the password: ")
+                for info in user_info[name]:
+                    if user_info[name]['password'] == passwd:
+                        print(f"welcome! {name}")  
+                        return 
+            else:
+                print("user name not found!! ")
+##now create the dashboard that will be shown to the user where he can create he to do and see his informations 
+def dashboard(user_Id):
+    print(f"\nWelcome to the dashboard Mr/Mrs {user_Id}")
+    while True:
+        print(f"\n---------------DASHBOARD------------------")
+        print("1.Create the to do task")
+        print("2.See the list of your to do task")
+        print("3.delete the to do task")
+        print("Logout\n")
+
+        choice = input("Please selecte an option from above")
+        match choice:
+            case '1':
+                create_task()
+            case '2':
+                see_task()
+            case '3':
+                delete_task()
+            case '4':
+                print("see you soon! be productive!!")
+                break
+    
+
+
+
                     
 
 
