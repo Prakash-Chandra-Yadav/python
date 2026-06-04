@@ -127,9 +127,47 @@ def register_the_user(register,registered):
     show_registered_user(registered)
 register_the_user(register,registered)
 
+print("\n-------this is another approach----------")
+
 ##nwo let say we dont want to modify the original register list 
 ##instad of working on the original list we can work on the copy
 
+register = ['Prakash','chandra','yadav']
+registered = []
+def register_the_user(register,registedred):
+    while register:
+        current_user = register.pop()
+        print(f"registering the {current_user}")
+        registered.append(current_user)
+    show_registered_user(registered)
+def show_the_registered_user(users):
+    for user in users:
+        print(f"{user.title()} has been registered already!!")
+register_the_user(register[:],registered)
+print(register)
+
+       
+
+print("\n-----------another topic from here----------")
+
+#here * before the parameter in the funtion means that the parameter will store the arbitraty number of values in the tuple
+
+def make_pizza(*toppings):
+    '''sunnarize the pizza we are abput to make'''
+    print(f"\n making pizza for the following toppings")
+    for topping in toppings: 
+        print(f"- {topping}")
+    print("finished making your pizza")
+make_pizza('mushroom','cheese','pineapple','peperoni')
+make_pizza('cheese')
 
 
-    
+##mixing the positional argumenst with the arbitrary arguments 
+def make_pizza(size,*toppings):
+    '''sunnarize the pizza we are abput to make'''
+    print(f"\n making pizza for the following toppings")
+    for topping in toppings: 
+        print(f"- {topping}")
+    print(f"{size} sized finished making your pizza")
+make_pizza(16,'mushroom','cheese','pineapple','peperoni')
+make_pizza(12,'cheese')
