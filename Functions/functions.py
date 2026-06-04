@@ -171,3 +171,25 @@ def make_pizza(size,*toppings):
     print(f"{size} sized finished making your pizza")
 make_pizza(16,'mushroom','cheese','pineapple','peperoni')
 make_pizza(12,'cheese')
+
+
+#what if we have an optional arguments positional arguments and the arbitrary arguments 
+def make_pizza(size,crust='',*toppings):
+    '''sunnarize the pizza we are abput to make'''
+    print(f"\n making pizza for the following toppings")
+    for topping in toppings: 
+        print(f"- {topping}")
+    print(f"{size} sized finished making your pizza whith {crust} crust")
+make_pizza(16,'thick','mushroom','cheese','pineapple','peperoni')
+make_pizza(12,'not_thick','cheese')
+
+##using arbitrary keyword arguments 
+def build_profile(first,last,**user_info):
+    '''build a dictationary containing everything we know about the user'''
+    user_info['first_name'] = first 
+    user_info['last_name'] = last
+    return user_info 
+user_profile = build_profile('ablert','einstein',
+                             location = 'princeton',
+                             field ='physis')
+print(user_profile)
