@@ -103,3 +103,33 @@ while True:
         break 
     greet = get_formatted_name(f_name,l_name,m_name)
     print(greet)
+
+print("\n--------next topic from here (passing a list )-----------")
+def greet_the_user(users):
+    for user in users: 
+        print(f"hello! {user.title()} nice to meet you")
+users = ['prakash','chandra','yadav']
+greet_the_user(users)
+
+#lest work on modifyiomng the list 
+register  = ['prakash','chandar','yadav']
+registered =[]
+
+def show_registered_user(users): 
+    for user in users: 
+        print(f"{user} is registered already!!")
+def register_the_user(register,registered):
+    while register: 
+        current_register = register.pop()
+        print(f"registering {current_register} .....")
+        registered.append(current_register)
+    print("finished registering all the users")
+    show_registered_user(registered)
+register_the_user(register,registered)
+
+##nwo let say we dont want to modify the original register list 
+##instad of working on the original list we can work on the copy
+
+
+
+    
