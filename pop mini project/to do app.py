@@ -104,7 +104,19 @@ def delete_task(user_ID):
     user_info[user_ID][tasks].remove(delete_task)
 
 
+def main():
+    print("\n------welcome to the to do app---------")
+    while True: 
+        print("\n2. CREATE AN ACCOUNT")
+        print("\n1. LOGIN")
 
+        option = input("please select the option: ")
+        match option: 
+            case '1':
+                create_account()
+            case '2':
+                login()
+                break 
             
         
 
