@@ -11,7 +11,7 @@ user_info = {}
 def create_account():
     name = input(Fore.WHITE + "please enter your  name: " + Style.RESET_ALL)
     while True:
-        user_name = input(Fore.WHITE + "please enter the user name: " + Style.RESET_ALL)
+        user_name = input(Fore.WHITE + "please enter the user name: " + Style.RESET_ALL).lower().strip()
         if user_name not in users: 
             password = input(Fore.WHITE + "please enter the password: " + Style.RESET_ALL)
 
@@ -52,7 +52,7 @@ def create_account():
 ##now create the function for login 
 def login():
     while True:
-        user_ID = input(Fore.WHITE + "please enter the user_name: " + Style.RESET_ALL)
+        user_ID = input(Fore.WHITE + "please enter the user_name: " + Style.RESET_ALL).lower().strip()
         for name in user_info.keys():
             if name == user_ID:
                 passwd = input(Fore.WHITE + "Please Enter the password: " + Style.RESET_ALL)
@@ -74,7 +74,7 @@ def dashboard(user_Id):
         print("1.Create the to do task")
         print("2.See the list of your to do task")
         print("3.delete the to do task")
-        print("Logout\n")
+        print("\n4.Logout")
 
         choice = input(Fore.WHITE + "Please selecte an option from above: " + Style.RESET_ALL)
         match choice:
@@ -94,13 +94,13 @@ def create_task(user_ID):
     while True: 
         task_list = []
         task = input(Fore.WHITE + "please enter the task: " + Style.RESET_ALL)
-        if task == 'done':
+        if task == 'done'or 'Done'or 'DONE':
             see_task(user_ID)
             break 
         else: 
             task_list.append(task)
             user_info[user_ID]['tasks'] = task_list
-            print(Fore.GREEN + "saved the task that you just entered" + Style.RESET_ALL)
+            print(Fore.GREEN + "saved the task that you just entered, enter 'done' to quit" + Style.RESET_ALL)
 
 ##let the user see the task 
 def see_task(user_ID):
