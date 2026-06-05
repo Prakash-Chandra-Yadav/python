@@ -91,6 +91,11 @@ def create_task(user_ID):
             task_list.append(task)
             user_info[user_ID]['tasks'] = task_list
             print("saved the task that you just entered")
+##let the user see the task 
+def see_task(user_ID):
+    print("\n---------LISTS OF YOUR TASK--------")
+    for task in user_info[user_ID][tasks]:
+        print(tasks)
 
 
 
