@@ -74,11 +74,8 @@ def dashboard(user_Id):
                 delete_task()
             case '4':
                 print("see you soon! be productive!!")
-                break
-    
-
-
-
+                break 
+#let the user create the task
 def create_task(user_ID):
     print("---please enter the tasks------")
     while True: 
@@ -96,6 +93,15 @@ def see_task(user_ID):
     print("\n---------LISTS OF YOUR TASK--------")
     for task in user_info[user_ID][tasks]:
         print(tasks)
+
+##let the user delete the task 
+def delete_task(user_ID):
+    print("\n---------LISTS OF YOUR TASK--------")
+    for task in user_info[user_ID][tasks]:
+        print(tasks)
+    print("copy and paste the task you wan to remove")
+    selected_task = input("paste the task here: ")
+    user_info[user_ID][tasks].remove(delete_task)
 
 
 
