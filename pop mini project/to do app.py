@@ -50,6 +50,8 @@ def login():
                     if user_info[name]['password'] == passwd:
                         print(f"welcome! {name}")  
                         return 
+                    else: 
+                        print(f"wrong password")
             else:
                 print("user name not found!! ")
 ##now create the dashboard that will be shown to the user where he can create he to do and see his informations 
@@ -77,7 +79,19 @@ def dashboard(user_Id):
 
 
 
-                    
+def create_task(user_ID):
+    print("---please enter the tasks------")
+    while True: 
+        task_list = []
+        task = input("please enter the task: ")
+        if task == 'done':
+            see_task(user_ID)
+            break 
+        else: 
+            task_list.append(task)
+            user_info[user_ID]['tasks'] = task_list
+            print("saved the task that you just entered")
+
 
 
             
