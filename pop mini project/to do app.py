@@ -1,20 +1,27 @@
+from colorama import Fore, init, Style
+init()
+
+
 #create the list taht will store the information about the user
 users = []
 #create the dictionary that stores the details about the users 
 user_info = {}
+
 ##we have to use the dictionary inside the dictionary to store the store ths users information
 def create_account():
-    name = input("please enter your  name: ")
+    name = input(Fore.WHITE + "please enter your  name: " + Style.RESET_ALL)
     while True:
-        user_name = input("please enter the user name: ")
+        user_name = input(Fore.WHITE + "please enter the user name: " + Style.RESET_ALL)
         if user_name not in users: 
-            password = input("please enter the password: ")
+            password = input(Fore.WHITE + "please enter the password: " + Style.RESET_ALL)
+
             has_lower = False 
             has_upper = False 
             has_number = False 
             has_special = False 
             special = ["!",'@',"#"]
             validate = True 
+
             while validate:
                 for character in password: 
                     if character.isupper():
@@ -25,98 +32,112 @@ def create_account():
                         has_number = True
                     elif character in special:
                         has_special = True
+
                 if has_upper and has_lower and has_number and has_special:
-                    confirm_password = input("please confirm the password: ")
+                    confirm_password = input(Fore.WHITE + "please confirm the password: " + Style.RESET_ALL)
                     if confirm_password == password: 
-                        print(f"account created successfully ! welcome {user_name}")
+                        print(Fore.GREEN + f"account created successfully ! welcome {user_name}" + Style.RESET_ALL)
                         user_info[user_name] = {'name':name,'password':confirm_password}
+                        users.append(user_name)
                         validate = False
                     else: 
-                        print("password didnt match please try again!!")
+                        print(Fore.RED + "password didnt match please try again!!" + Style.RESET_ALL)
                 else: 
-                    print("Passwor should have the combination of uppercase lower case number and special characetrs")
+                    print(Fore.RED + "Passwor should have the combination of uppercase lower case number and special characetrs" + Style.RESET_ALL)
                     break
             break  
         else:
-            print("user already exists")
+            print(Fore.GREEN + "user already exists" + Style.RESET_ALL)
+
 ##now create the function for login 
 def login():
     while True:
-        user_ID = input("please enter the user_name: ")
+        user_ID = input(Fore.WHITE + "please enter the user_name: " + Style.RESET_ALL)
         for name in user_info.keys():
             if name == user_ID:
-                passwd = input("Please Enter the password: ")
+                passwd = input(Fore.WHITE + "Please Enter the password: " + Style.RESET_ALL)
                 for info in user_info[name]:
                     if user_info[name]['password'] == passwd:
-                        print(f"welcome! {name}")  
+                        print(Fore.GREEN + f"welcome! {name}" + Style.RESET_ALL) 
+                        dashboard(name) 
                         return 
                     else: 
-                        print(f"wrong password")
+                        print(Fore.RED + f"wrong password" + Style.RESET_ALL)
             else:
-                print("user name not found!! ")
+                print(Fore.RED + "user name not found!! " + Style.RESET_ALL)
+
 ##now create the dashboard that will be shown to the user where he can create he to do and see his informations 
 def dashboard(user_Id):
-    print(f"\nWelcome to the dashboard Mr/Mrs {user_Id}")
+    print(Fore.GREEN + f"\nWelcome to the dashboard Mr/Mrs {user_Id}" + Style.RESET_ALL)
     while True:
-        print(f"\n---------------DASHBOARD------------------")
+        print(Fore.YELLOW + "\n---------------DASHBOARD------------------" + Style.RESET_ALL)
         print("1.Create the to do task")
         print("2.See the list of your to do task")
         print("3.delete the to do task")
         print("Logout\n")
 
-        choice = input("Please selecte an option from above")
+        choice = input(Fore.WHITE + "Please selecte an option from above: " + Style.RESET_ALL)
         match choice:
             case '1':
-                create_task()
+                create_task(user_Id)
             case '2':
-                see_task()
+                see_task(user_Id)
             case '3':
-                delete_task()
+                delete_task(user_Id)
             case '4':
-                print("see you soon! be productive!!")
+                print(Fore.GREEN + "see you soon! be productive!!" + Style.RESET_ALL)
                 break 
+
 #let the user create the task
 def create_task(user_ID):
-    print("---please enter the tasks------")
+    print(Fore.GREEN + "---please enter the tasks------" + Style.RESET_ALL)
     while True: 
         task_list = []
-        task = input("please enter the task: ")
+        task = input(Fore.WHITE + "please enter the task: " + Style.RESET_ALL)
         if task == 'done':
             see_task(user_ID)
             break 
         else: 
             task_list.append(task)
             user_info[user_ID]['tasks'] = task_list
-            print("saved the task that you just entered")
+            print(Fore.GREEN + "saved the task that you just entered" + Style.RESET_ALL)
+
 ##let the user see the task 
 def see_task(user_ID):
-    print("\n---------LISTS OF YOUR TASK--------")
-    for task in user_info[user_ID][tasks]:
-        print(tasks)
+    print(Fore.GREEN + "\n---------LISTS OF YOUR TASK--------" + Style.RESET_ALL)
+    if 'tasks'in user_info[user_ID]:
+        for task in user_info[user_ID]['tasks']:
+            print(task)
+    else: 
+        print(Fore.GREEN + "hmm.. seems like you have  no tasks today" + Style.RESET_ALL)
 
 ##let the user delete the task 
 def delete_task(user_ID):
-    print("\n---------LISTS OF YOUR TASK--------")
-    for task in user_info[user_ID][tasks]:
-        print(tasks)
-    print("copy and paste the task you wan to remove")
-    selected_task = input("paste the task here: ")
-    user_info[user_ID][tasks].remove(delete_task)
+    print(Fore.GREEN + "\n---------LISTS OF YOUR TASK--------" + Style.RESET_ALL)
+    if 'tasks'in user_info[user_ID]:
+        for task in user_info[user_ID]['tasks']:
+            print(task)
+        print("copy and paste the task you wan to remove")
+        selected_task = input(Fore.WHITE + "paste the task here: " + Style.RESET_ALL)
+        user_info[user_ID]['tasks'].remove(selected_task)
+    else:
+        print(Fore.RED + "your task list is empty" + Style.RESET_ALL)
 
 
 def main():
-    print("\n------welcome to the to do app---------")
+    print("\n------welcome to the to do app---------" )
     while True: 
-        print("\n2. CREATE AN ACCOUNT")
-        print("\n1. LOGIN")
+        print("\n1. CREATE AN ACCOUNT")
+        print("\n2. LOGIN")
 
-        option = input("please select the option: ")
+        option = input(Fore.WHITE + "please select the option: " + Style.RESET_ALL)
         match option: 
             case '1':
                 create_account()
             case '2':
                 login()
                 break 
-            
-        
+            case '':
+                print("please selecte the valid option")
 
+main()
