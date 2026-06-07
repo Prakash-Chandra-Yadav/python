@@ -6,9 +6,9 @@ users = []
 user_info = {}
 ##we have to use the dictionary inside the dictionary to store the store ths users information
 def create_account():
-    name = input("please enter your  name: ")
+    name = input("please enter your  name: ").title().strip()
     while True:
-        user_name = input("please enter the user name: ")
+        user_name = input("please enter the user name: ").title().strip()
         if user_name not in users: 
             password = input("please enter the password: ")
             has_lower = False 
@@ -45,7 +45,7 @@ def create_account():
 ##now create the function for login 
 def login():
     while True:
-        user_ID = input("please enter the user_name: ")
+        user_ID = input("please enter the user_name: ").title().strip()
         for name in user_info.keys():
             if name == user_ID:
                 passwd = input("Please Enter the password: ")
@@ -66,7 +66,7 @@ def dashboard(user_Id):
         print("1.Create the to do task")
         print("2.See the list of your to do task")
         print("3.delete the to do task")
-        print("Logout\n")
+        print("4.Logout\n")
 
         choice = input("Please selecte an option from above")
         match choice:
@@ -77,7 +77,7 @@ def dashboard(user_Id):
             case '3':
                 delete_task(user_Id)
             case '4':
-                print(+"see you soon! be productive!!")
+                print("see you soon! be productive!!")
                 break 
 #let the user create the task
 def create_task(user_ID):
@@ -95,7 +95,7 @@ def create_task(user_ID):
 ##let the user see the task 
 def see_task(user_ID):
     print("\n---------LISTS OF YOUR TASK--------")
-    if 'tasks' in user_info[user_ID]:
+    if  user_info[user_ID]['tasks'].count() != 0:
         for task in user_info[user_ID]['tasks']:
             print(task)
     else: 
