@@ -210,3 +210,27 @@ another_car.read_odometer()
 another_car.increment_odometer(200)
 another_car.read_odometer()
 
+##hwo when we directly update the odeo meter reding with the new value which is overriten as the varibale, what if the car owner will roll back the odometer reading by directly updating the value of the odometer reading, how can we prevent that?
+print("\n----Preventing the roll back of the odometer reading------")
+class Car:
+    def __init__(self,make,model,year):
+
+
+        '''setting the default attributes'''
+        self.make = make 
+        self.model = model 
+        self.year = year 
+        self.odometer_reading = 20
+    def get_descriptive_name(self):
+        print(f"{self.year} {self.make} {self.model}")
+    def read_odometer(self):
+        print(f"this car has {self.odometer_reading} on it")
+    def update_odometer(self,milage):
+        if milage > self.odometer_reading:
+            self.odometer_reading = milage 
+        else: 
+            print("sorry you cant roll back the odometer")
+old_car = Car('scorpio','mahindra',2026)
+old_car.get_descriptive_name()
+old_car.read_odometer()
+old_car.update_odometer(30)
