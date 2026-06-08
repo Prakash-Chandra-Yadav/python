@@ -11,4 +11,70 @@ class Dog:
     def roll_over(self):
         ''''simulate rplling in response to a command'''
         print(f"{self.name} is rolling over")
-    
+
+
+##making an instances from a class 
+my_dog = Dog('Willie',6)
+
+print(f"my dog name is {my_dog.name}")
+print(f"my dog age is {my_dog.age}")
+
+##calling the attributes 
+print(my_dog.name)
+print(my_dog.age)
+
+##calling the methods 
+my_dog.sit()
+my_dog.roll_over()
+
+print("\nCreating the multiple instances")
+
+my_dog =Dog('williu',9)
+your_dog = Dog('Billie',6)
+
+print(f"My dog name is my dog {my_dog.name}")
+print(f"your dog name is {your_dog.name}")
+
+my_dog.sit()
+your_dog.sit()
+
+my_dog.roll_over()
+your_dog.roll_over()
+
+
+print("\nExercises from here")
+
+##EXERCISES: 
+#resturant: 
+class Resturant:
+    '''creating the init  function to store the resturent name and the cusine'''
+    def __init__(self,name,cuisine):
+        self.name = name 
+        self.cuisine = cuisine 
+    def describe_resturant(self):
+        print(f"this resturant name is {self.name}")
+        print(f"this resturant serves {self.cuisine}")
+    def open_returant(self):
+        print(f"{self.name} resturant is open now !!")
+##making and instances from the resturant class 
+my_resturant = Resturant("kfc","chicken")
+
+##printing the attributes 
+my_resturant.name 
+my_resturant.cuisine
+
+#calling the methods 
+my_resturant.describe_resturant()
+my_resturant.open_returant()
+
+
+print("\nNext Exercises from here")
+
+##three resturants
+my_res = Resturant('rambhandar','sweets')
+your_res = Resturant('kfc','chicken')
+his_res = Resturant('coffeespot','coffee')
+
+my_res.describe_resturant()
+your_res.describe_resturant()
+his_res.describe_resturant()
