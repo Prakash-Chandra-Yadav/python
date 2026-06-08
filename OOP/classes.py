@@ -78,3 +78,45 @@ his_res = Resturant('coffeespot','coffee')
 my_res.describe_resturant()
 your_res.describe_resturant()
 his_res.describe_resturant()
+
+##USers 
+class User:
+    def __init__(self,first_name,last_name):
+        '''creates the attributes of the first  name and the last name'''
+        self.first_name = first_name 
+        self.last_name = last_name 
+    def describe_user(self):
+        print(f"the users first name is {self.first_name}\n the users last name is {self.last_name}")
+    def greet_user(self):
+        print(f"Hi Mr/Mrs {self.last_name}")
+##creating the seperate instances and calling the method upon them 
+first_person = User('Prakash','Yadav')
+second_person = User('Albert','Watson')
+third_person = User('Adam','Joseph')
+
+first_person.describe_user()
+second_person.describe_user()
+third_person.describe_user()
+
+print("\n")
+
+first_person.greet_user()
+second_person.greet_user()
+third_person.greet_user()
+
+##working with the classes and instances 
+
+#the car class 
+class Car: 
+    '''a simple attempt to represent a car'''
+    def __init__(self,make,model,year):
+        '''initialize the attributes to describe the car'''
+        self.make = make 
+        self.model = model 
+        self.year = year 
+    def get_discriptive_name(self):
+        '''represent the neatly format descriptive name. '''
+        long_name = f"{self.year} {self.make} {self.model}"
+        return long_name.title()
+my_new_car = Car('audi','a4',2024)
+print(my_new_car.get_discriptive_name())
