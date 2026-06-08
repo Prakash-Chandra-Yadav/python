@@ -234,3 +234,35 @@ old_car = Car('scorpio','mahindra',2026)
 old_car.get_descriptive_name()
 old_car.read_odometer()
 old_car.update_odometer(30)
+
+##EXERCISE 
+##Number served 
+##9.4
+
+class Rasturant: 
+    def __init__(self,name,cuisine):
+        '''added the default attributes of the class '''
+        self.name = name 
+        self.cuisine = cuisine 
+        self.order_served = 0 
+    def resturant_description(self):
+        print(f"the name of the resturant is {self.name}\n")
+        print(f"and it serves {self.cuisine}")
+    def show_order_served(self):
+        print(f"this resturant has served {self.order_served}")
+    def update_order_served(self,orders): 
+        if orders > self.order_served:
+            self.order_served = orders
+        else: 
+            print("the served number of orders cant be decreased")
+    def increment_order_served(self,orders):
+        self.order_served += orders
+
+resturant_1 = Rasturant('KFC','chickens cuisine')
+
+resturant_1.resturant_description()
+resturant_1.update_order_served(20)
+resturant_1.show_order_served()
+resturant_1.update_order_served(10)
+resturant_1.increment_order_served(20)
+resturant_1.show_order_served()
