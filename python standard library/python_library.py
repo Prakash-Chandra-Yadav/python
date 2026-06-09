@@ -37,7 +37,7 @@ while True:
         my_ticket.append(choice_number)
     if my_ticket == winning_ticket:
         print("you win the lottery")
-        print(f"-----you won the lottery, you have tried {attempts} times-----")
+        print(f"-----you won the lottery, you have succeeded at  {attempts}th attempt-----")
         break
     else:
         attempts += 1
