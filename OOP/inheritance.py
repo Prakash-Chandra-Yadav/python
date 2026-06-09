@@ -93,8 +93,76 @@ ic1.show_flavours()
 ic1.update_order(100)
 
             
+##9.7 admin 
+class User: 
+    def __init__(self,first_name,last_name):
+        self.first_name = first_name 
+        self.last_name = last_name 
+        self.login_attempts = 0 
+    def greet_users(self): 
+        print(f"Hi Mr/Mrs {self.last_name}")
+    def see_login_attempts(self):
+        print(f"you have performed total {self.login_attempts} login attempts")
+    def update_login_attempts(self,number): 
+        if number < self.login_attempts: 
+            print("sorry the number of login attempts cant be reversed")
+        else: 
+            self.login_attempts = number 
+    def increment_login(self,number): 
+        self.login_attempts += number 
+class Admin(User):
+    def __init__(self,first_name,last_name,*privilages): 
+        super().__init__(first_name,last_name)
+        self.privilages = privilages
+    def show_privilages(self): 
+        for privilage in self.privilages:
+            print(privilage)
+Admin1 = Admin('Prakash','chandra','Can add user','can add post','can deleter user')
+Admin1.greet_users()
+Admin1.update_login_attempts(10)
+Admin1.update_login_attempts(2)
+Admin1.increment_login(2)
+Admin1.see_login_attempts()
+Admin1.show_privilages()
 
-    
+
+##9.8 privilages 
+class User: 
+    def __init__(self,first_name,last_name):
+        self.first_name = first_name 
+        self.last_name = last_name 
+        self.login_attempts = 0 
+    def greet_users(self): 
+        print(f"Hi Mr/Mrs {self.last_name}")
+    def see_login_attempts(self):
+        print(f"you have performed total {self.login_attempts} login attempts")
+    def update_login_attempts(self,number): 
+        if number < self.login_attempts: 
+            print("sorry the number of login attempts cant be reversed")
+        else: 
+            self.login_attempts = number 
+    def increment_login(self,number): 
+        self.login_attempts += number
+
+class Privilage: 
+    def __init__(self): 
+        self.privilages = ['can add users','can create post','can delete post']
+    def show_privilages(self):
+        print("here are the privilages that the admin can  have") 
+        for privilage in self.privilages: 
+            print(privilage)
+class Admin(User): 
+    def __init__(self,first_name,last_name): 
+        super().__init__(first_name,last_name)
+        self.privilage = Privilage()
+Admin1 = Admin('Prakash','chandra')
+Admin1.greet_users()
+Admin1.update_login_attempts(40)
+Admin1.increment_login(2)
+Admin1.see_login_attempts()
+Admin1.privilage.show_privilages()
+
+
 
 
 
