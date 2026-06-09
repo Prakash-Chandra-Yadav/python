@@ -64,3 +64,38 @@ my_leaf.battery.describe_battery()
 my_leaf.battery.get_range()
 
 
+##9.6
+class Resturant:
+    def __init__ (self,name,cuisine):
+        self.name = name 
+        self.cuisine = cuisine 
+        self.order_record = 0 
+    def resturant_desctiption(self): 
+        print(f"the name of the resturant is {self.name} and it serves {self.cuisine}")
+    def update_order(self,number):
+        if self.order_record < number: 
+            self.order_record = number
+        else: 
+            print("you cant decrease the number of order served")
+    def show_order_record(self):
+        print(f"the number of order served is {self.order_record}")
+class IceCreamStand(Resturant): 
+    def __init__(self,name,cuisine='icecream',*flavours):
+        super().__init__(name,cuisine)
+        self.flavours = flavours
+    def show_flavours(self):
+        print("they serves these flavours: ")
+        for flavour in self.flavours:
+            print(flavour)
+ic1 = IceCreamStand('The pepe','icecreams','venella','chocolate','mango')
+ic1.resturant_desctiption()
+ic1.show_flavours()
+ic1.update_order(100)
+
+            
+
+    
+
+
+
+
