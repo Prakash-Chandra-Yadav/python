@@ -23,30 +23,31 @@ class Todo:
         while True: 
             user = input("please enter the name of the use: ")
             user_password = input("please enter your password: ")
-            if user_password == user_info[user]['password']:
+            if user_password == user_info['password'] and user == user_info['user_name']:
                 print(f"-----------welcome-----{self.user_name}")
                 self.dashboard()
-                break 
-            else: 
-                print("please enter the correct password!!")
+                break
+            else:
+                print("wrong password or user name please try again")
             
     def dashboard(self): 
-        print("-----this is your dahsboard------")
-        print("1.Create task")
-        print("2.See_task")
-        print("3.delete task")
-        choose = input("please slecte the option: ")
-        match choose: 
-            case '1':
-                self.create_task()
-            case '2':
-                self.see_task()
-            case '3':
-                self.delete_task()
+        while True:
+            print("-----this is your dahsboard------")
+            print("1.Create task")
+            print("2.See_task")
+            print("3.delete task")
+            choose = input("please slecte the option: ")
+            match choose: 
+                case '1':
+                    self.create_task()
+                case '2':
+                    self.see_task()
+                case '3':
+                    self.delete_task()
         
     def see_task(self):
         i = 1
-        if user_info['tasks']:
+        if not user_info['tasks']:
             print("you have no task to see")
         else:
             for task in user_info['tasks']:
@@ -54,7 +55,7 @@ class Todo:
                 i += 1
     def delete_task(self):
         print("select the task you want to delete")
-        if user_info['tasks']:
+        if not user_info['tasks']:
             print("you have no task to delete")
         else: 
             select_task = input("please select the task you want to delete: ")
@@ -94,6 +95,7 @@ def main():
                         password_confirm = input("please confirm password: ")
                         if password_unconfirmed == password_confirm:
                                 user1 = Todo(name,password_confirm)
+                                user1.create_account()
                                 break 
                         else: 
                             print("password didnt match with previous password")
