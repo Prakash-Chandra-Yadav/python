@@ -21,7 +21,7 @@ class Todo:
                 print("task has been added")
     def login_account(self):
         while True: 
-            user = input("please enter the name of the use: ")
+            user = input("please enter the name of the user: ")
             user_password = input("please enter your password: ")
             if user_password == user_info['password'] and user == user_info['user_name']:
                 print(f"-----------welcome-----{self.user_name}")
@@ -36,7 +36,8 @@ class Todo:
             print("1.Create task")
             print("2.See_task")
             print("3.delete task")
-            choose = input("please slecte the option: ")
+            print("4.Logout")
+            choose = input("please slecte the option: ").strip()
             match choose: 
                 case '1':
                     self.create_task()
@@ -44,6 +45,11 @@ class Todo:
                     self.see_task()
                 case '3':
                     self.delete_task()
+                case '4':
+                    print("see you soon! be productive!!")
+                    break
+                case _:
+                    print("invalid option please try again")
         
     def see_task(self):
         i = 1
