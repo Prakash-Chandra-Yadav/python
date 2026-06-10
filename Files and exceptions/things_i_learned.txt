@@ -1,0 +1,5 @@
+we can slice the string like the list
+we can search for the word in the string in python
+we can search for the word but or character but order matters 
+we cant get the position of the letter in the python like a list 
+extra words can be added into the string using the + operator
