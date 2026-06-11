@@ -48,3 +48,4 @@ except FileNotFoundError:
 else: 
     number = content.lower().count('python')
     print(f"the word 'python' repeats {number} times")
+
