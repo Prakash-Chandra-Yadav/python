@@ -15,37 +15,21 @@ class Todo:
         user_info[self.name]['password'] = self.password
         user_info[self.name]['tasks'] = []
         content = json.dumps(user_info)
-        path.write_text(content)
-    def login(self):
-        print("\n------ENTER YOUR LOGIN DETAILS-------\n")
-        path = Path(r'C:\Users\Envay\Desktop\python\OOP mini project 1\user_info.json')
-        global user_info
-        content = path.read_text()
-        user_info = json.loads(content)
-        while True:
-            name = input("please enter your name: ")
-            if name in user_info.keys():
-                password = input("please enter your password: ")
-                if password == user_info[name]['password']:
-                    self.dashboard()
-                    break
-                else: 
-                    print("password didnt match please enter correct details!!")
-            else:
-                print("USER NOT FOUND!!")      
+        path.write_text(content)     
     def create_task(self):
         print("\n-----------Please enter the task you enter---------\n")
         while True:
             task = input("Please enter the task: ")
             if task != 'q':
                 user_info[self.name]['tasks'].append(task)
+                self.save_data()
                 print("created the task")
             else:
                 print("stopped saving tasks")
                 break 
     def sow_task(self):
         print("\n--------here are your saved tasks-------\n")
-        for task in user_info[self.name]['tasks'].values():
+        for task in user_info[self.name]['tasks']:
             print(task)
     def delete_task(self): 
         print("\n-------Please enter the task you want to delete-----\n")
@@ -53,10 +37,12 @@ class Todo:
         for task in user_info[self.name]['tasks']:
             if task == selected_task:
                 user_info[self.name]['tasks'].remove(task)
+                self.save_data()
                 print("deleted the task!")
+
                 break 
             else:
-                print("task not found!!")
+                print("")
     def dashboard(self):
         print("\n------Welcome---------\n")
         print("------Please select the option from below---------")
@@ -71,8 +57,30 @@ class Todo:
                 case '3':
                     self.delete_task()
                 case '4':
-                    self.logout()
-                    break 
+                    print("be productive!!")
+                    break
+    def save_data(self):
+        path = Path(r'C:\Users\Envay\Desktop\python\OOP mini project 1\user_info.json')
+        content = json.dumps(user_info)
+        path.write_text(content)
+def login():
+    print("\n------ENTER YOUR LOGIN DETAILS-------\n")
+    global user_info
+    path = Path(r'C:\Users\Envay\Desktop\python\OOP mini project 1\user_info.json')
+    content = path.read_text()
+    user_info = json.loads(content)
+    while True:
+        name = input("please enter your name: ")
+        if name in user_info.keys():
+            password = input("please enter your password: ")
+            if password == user_info[name]['password']:
+              user = Todo(name,user_info[name]['address'],user_info[name]['password'])
+              return user
+            else:
+                print("password didnt match please enter correct details!!")
+        else:
+            print("USER NOT FOUND!!")
+
 def main():
     print("=======WELCOME TO THE TO DO APP=======")
     print("1>Create Account\n2.>Login")
@@ -110,7 +118,8 @@ def main():
                 else: 
                     print("password should have the combination of the number charcter and letters and atleast one upper case letter")
         case '2':
-            user1.login()
+            user = login()
+            user.dashboard()
 main()
                 
 
