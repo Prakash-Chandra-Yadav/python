@@ -62,6 +62,41 @@ class ContactBook:
                 print("searching...")
     #method to delete the contact 
     def delete_contact(self):
-        
+        select_contact = input("select the contact you want to delete: ")
+        for contact in contact_info:
+            if contact == select_contact:
+                del contact_info[select_contact]
+            else:''
+def main():
+    print("/n-------WELCOME TO THE CONTACT BOOK----------/n")
+    while True:
+        print("1>Add Contact/n2.View all contact/n3>Search Contact/n4>Update Contact/n5>Delete Contact/n>5.Exit")
+        choice = input("select the option from above: ")
+        match choice: 
+            case '1':
+                name = input("please enter the name of the contact: ")
+                try:
+                    number_enter = int(input("enter the number"))
+                except ValueError:
+                    print("please enter the number: ")
+                else: 
+                    number = number_enter
+                email= input("please enter the email: ")
+                dob_set = input("please enter the dob in 'd-m-y' format: ")
+                dob_list = dob_set.split('-')
+                if dob_list[0] > 32 or dob_list[0] <1:
+                    print("please select the correct day")
+                if dob_list[1]>12 or  dob_list[1]<1:
+                    print ("please select the correct month")
+                if dob_list[2] > 2026:
+                    print("please select the correct year")
+                else: 
+                    dob = dob_set 
+                contact1 = ContactBook(name,number,email,dob)
+                contact1.create_contact()
+
+            case '2':
+                
+
 
                 
