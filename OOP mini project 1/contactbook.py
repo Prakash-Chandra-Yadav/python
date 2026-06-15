@@ -24,7 +24,8 @@ class ContactBook:
         print("\n--LIST OF YOUR CONTACT-----\n")
         self.read_file()
         for contact in contact_info:
-            print(f"Contact details of {contact}")
+            print("\n")
+            print(f"-----Contact details of {contact}----------")
             for key,value in contact_info[contact].items():
                 print(f"\n{key} -> {value}")
     #method to search contact
@@ -36,7 +37,7 @@ class ContactBook:
             for key,value in contact_info[contact_name].items():
                     print(f"\n{key} -> {value}")
         else:
-            print("searching...")
+            print("contact not found")
     #method to update contact
     def update_contact(self):
         print("-----UPDATE CONTACT---------")
@@ -64,7 +65,7 @@ class ContactBook:
                         self.save_mod()
                     case '4':
                         updated_dob = input("please enter the updated dob 'd-m-y' format: ")
-                        contact_info[contact_info] = updated_dob
+                        contact_info[contact_name]['dob'] = updated_dob
                         self.save_mod()
                     case '':
                         print("please select the correct option")
@@ -92,7 +93,7 @@ def main():
     print("\n------WELCOME TO THE CONTACT BOOK----------\n")
     cont1 = ContactBook()
     while True:
-        print("1>Add Contact\n2.View all contact\n3>Search Contact\n4>Update Contact\n5>Delete Contact\n>5.Exit")
+        print("1>Add Contact2.View all contact\n3>Search Contact\n4>Update Contact\n5>Delete Contact\n>5.Exit")
         choice = input("select the option from above: ")
         match choice: 
             case '1':
