@@ -10,7 +10,9 @@ class AlienInvasion:
         pygame.init()
         self.clock = pygame.time.Clock()
         self.settings = Settings()
-        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        self.screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
+        self.settings.screen_width = self.screen.get_rect().width
+        self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("ALIEN INVASION")
         self.ship = Ship(self)
 
@@ -44,6 +46,9 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
         #move the ship to the left 
             self.ship.moving_left = True
+        ##quit the game when user pressed the q button 
+        elif event.key == pygame.K_q:
+            sys.exit()
     def _check_keyup_events(self,event):
         '''respond to the key releases'''
         if event.key == pygame.K_RIGHT:
