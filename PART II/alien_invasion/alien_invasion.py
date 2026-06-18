@@ -1,9 +1,12 @@
 import sys 
+from time import sleep 
 import pygame 
 from settings import Settings
+from game_starts import GameStarts
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+
 
 class AlienInvasion:
     '''overall class to manage the game assets and behaviors'''
@@ -16,6 +19,8 @@ class AlienInvasion:
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("ALIEN INVASION")
+        #create an instance to store the stastitics 
+        self.stats = GameStarts(self)
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
@@ -82,7 +87,16 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+        self._check_bullet_alien_collisions()
         #check for any bullets that have hit aliens
+        #if so get rid of the bullet and the alien 
+        collisions = pygame.sprite.groupcollide(self.bullets,self.aliens, True, True)
+        if not self.aliens: 
+            #distroy the existing bullet and create the new fleet 
+            self.bullets.empty()
+            self._create_fleet()
+    def _check_bullet_alien_collisions(self):
+                #check for any bullets that have hit aliens
         #if so get rid of the bullet and the alien 
         collisions = pygame.sprite.groupcollide(self.bullets,self.aliens, True, True)
         if not self.aliens: 
@@ -95,6 +109,9 @@ class AlienInvasion:
         '''check if the fleet is at the edge then change the direction'''
         self._check_fleet_edges()
         self.aliens.update()
+        #look if alien-ship collision 
+        if pygame.sprite.spritecollideany(self.ship,self.aliens):
+            print("ship hit, SHitt!!")
     def _check_fleet_edges(self):
         '''respond appropriately if any of the alien has reached the edge'''
         for alien in self.aliens.sprites():
