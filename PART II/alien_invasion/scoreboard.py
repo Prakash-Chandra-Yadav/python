@@ -1,8 +1,11 @@
-import pygame.font 
+import pygame.font
+from pygame.sprite import Group 
+from ship import Ship
 
 class Scoreboard:
     def __init__(self,ai_game):
         '''initialize the score keeping attributes '''
+        self.ai_game = ai_game
         self.screen = ai_game.screen 
         self.screen_rect = self.screen.get_rect()
         self.settings = ai_game.settings 
@@ -15,6 +18,7 @@ class Scoreboard:
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
+        self.prep_ships()
     def prep_score(self):
         '''turn the score into a rendered image'''
         rounded_score = round(self.stats.score,-1)
@@ -27,10 +31,11 @@ class Scoreboard:
         self.score_rect.right = self.screen_rect.right - 20 
         self.score_rect.top = 20 
     def show_score(self): 
-        '''draw score and levels on the screen'''
+        '''draw score ,levels and number of ships left on the screen'''
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)
+        self.ships.draw(self.screen)
     
     def prep_high_score(self):
         '''turn the high score into the rendered image'''
@@ -48,7 +53,7 @@ class Scoreboard:
         ''''check to see if there is new high score'''
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
-            self.prep_high_score
+            self.prep_high_score()
     
     def prep_level(self):
         '''turn the level into the rendered image'''
@@ -59,3 +64,12 @@ class Scoreboard:
         self.level_rect = self.level_image.get_rect()
         self.level_rect.right = self.score_rect.right
         self.level_rect.top = self.score_rect.bottom + 10
+
+    def prep_ships(self):
+        '''show how many ships are left'''
+        self.ships = Group()
+        for ship_number in range(self.stats.ships_left):
+            ship = Ship(self.ai_game)
+            ship.rect.x = 10 + ship_number * ship.rect.width
+            ship.rect.y = 10 
+            self.ships.add(ship)
