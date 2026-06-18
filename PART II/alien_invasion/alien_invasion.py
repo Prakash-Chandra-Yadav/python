@@ -30,7 +30,7 @@ class AlienInvasion:
         self.bg_color = (230,230,230)
 
         #start the alien envasion in the active state 
-        self.game_active = True
+        self.game_active = False
     def run_game(self):
         '''start the main loop for the game'''
         while True: 
