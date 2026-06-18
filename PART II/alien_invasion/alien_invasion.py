@@ -3,9 +3,11 @@ from time import sleep
 import pygame 
 from settings import Settings
 from game_starts import GameStarts
+from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+
 
 
 class AlienInvasion:
@@ -31,6 +33,9 @@ class AlienInvasion:
 
         #start the alien envasion in the active state 
         self.game_active = False
+
+        #make the play button button 
+        self.play_button = Button(self,"play")
     def run_game(self):
         '''start the main loop for the game'''
         while True: 
@@ -55,6 +60,9 @@ class AlienInvasion:
                     self._check_keydown_events(event)
                 elif event.type == pygame.KEYUP:
                     self._check_keyup_events(event)
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = pygame.mouse.get_pos()
+                    self._check_play_button(mouse_pos)
 
     def _check_keydown_events(self,event):
         '''respond to key presses'''
@@ -75,6 +83,21 @@ class AlienInvasion:
             self.ship.moving_right = False 
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+
+    def _check_play_button(self, mosue_pos):
+        '''start a new game when the player clicks play'''
+        button_clicked = self.play_button.rect.collidepoint(mosue_pos)
+        if button_clicked and not self.game_active:
+            self.stats.reset_starts()
+            self.game_active  = True
+            #get rid of  any remaining bullets and aliens 
+            self.bullets.empty()
+            self.aliens.empty()
+
+            #create a new fleet and center the ship
+            self._create_fleet()
+            self.ship.center_ship()
+
     ##method that handles the fire of the bullet 
     def _fire_bullet(self):
         '''create the new bullet and add it to the bullet group'''
@@ -185,6 +208,9 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
+        #draw the paly butto if the game is inactive 
+        if not self.game_active:
+            self.play_button.draw_button()
         #make most recently drawn screen visible 
         pygame.display.flip()
 
